@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   ponto: Pontos;
   constructor(private clientService: ClientService){
 
-  }
+  } 
 
   ngOnInit(): void {
     // this.clientService.retrieveClients().subscribe(clients =>

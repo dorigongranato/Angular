@@ -10,7 +10,7 @@ import { Client } from '../models/client';
 export class ClientListItemComponent implements OnInit {
   
   @Input() client: Client;
-  @Output() selectedClient: EventEmitter<Client> = new EventEmitter()
+  @Output() selectedClientId: EventEmitter<Client> = new EventEmitter()
   
   constructor() { }
 
@@ -19,7 +19,7 @@ export class ClientListItemComponent implements OnInit {
   }
 
   onSelection(){
-    this.selectedClient.emit(this.client);
+    this.selectedClientId.emit(this.client);
   }
 
 }

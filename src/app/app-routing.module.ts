@@ -4,17 +4,26 @@ import {TransacoesComponent} from './transacoes/transacoes.component';
 import {HistoricoComponent} from './historico/historico.component';
 import {BeneficiosComponent} from './beneficios/beneficios.component';
 
-
 const routes: Routes = [
-  {path: 'transacoes', component: TransacoesComponent},
-  {path: 'beneficios', component: BeneficiosComponent},
   {
-    path: 'historico',
-    component: HistoricoComponent
+    path: 'clientes',
+    children: [
+      {path: '', component: TransacoesComponent},
+      {path: 'beneficios', component: BeneficiosComponent},
+      {path: 'historico', component: HistoricoComponent},    
+    ]
+  },
+  {
+    path: 'clientes/:id',
+    children: [
+      {path: '', component: TransacoesComponent},
+      {path: 'beneficios', component: BeneficiosComponent},
+      {path: 'historico', component: HistoricoComponent},  
+    ]
   },
   {
     path: '',
-    redirectTo: '/transacoes',
+    redirectTo: '/clientes',
     pathMatch: 'full'
   },
   {path: '**', component: TransacoesComponent}

@@ -3,6 +3,7 @@ import { Client } from './models/client';
 import { ClientService } from './services/client.service';
 import { Pontos } from './models/pontos';
 import { Observable } from 'rxjs';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
 
 @Component({
@@ -12,28 +13,28 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent implements OnInit {
   clients:Observable<Client[]>;
-  //clients:Client[] = [];
-  selectedClient: Client;
+  selectedClientId;
   ponto: Pontos;
-  constructor(private clientService: ClientService){
+  busca = '';
 
-  } 
+  constructor(private clientService: ClientService,
+    private router: Router, private route: ActivatedRoute){
+
+  }
 
   ngOnInit(): void {
-    // this.clientService.retrieveClients().subscribe(clients =>
-    //   this.clients = clients
-    // )
       this.clients = this.clientService.retrieveClients();
-    
-  } 
+      this.router.events
+      .subscribe(event => {
+        if(event instanceof NavigationEnd){
+          this.selectedClientId = this.router.url.split('clientes/')[1];
+        }
+      });
+      // .subscribe(paramMap => this.selectedClientId = paramMap.get('id'));
+  }
 
   onSelected(client:Client):void{
-    this.selectedClient = client;
-
-    this.clientService.retrievePronto().subscribe(ponto =>
-      this.ponto = ponto
-    )
-
-    console.log(this.ponto);
+    this.router.navigate(['/clientes', client.id]);
+    //console.log(this.ponto);
   }
 }

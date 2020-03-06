@@ -3,18 +3,19 @@
     <mat-toolbar>
       <div class="search-container">
         <label for="input-search">
-          <input type="text" id="input-search" placeholder="Buscar por nome, código ou email" class="input-lg">
+          <input type="text" id="input-search" [(ngModel)]="busca" placeholder="Buscar por nome, código ou email" class="input-lg">
         </label>
         <button mat-button><i class="icon icon-search"></i></button>
       </div>
     </mat-toolbar>
     <!-- two line list -->
-    <mat-list *ngIf="!selectedClient">
-      <app-client-list-item 
-        *ngFor="let client of clients | async"  [client]="client" (selectedClient)="onSelected($event)">
+    <mat-list *ngIf="!selectedClientId">
+      <app-client-list-item
+        *ngFor="let client of clients | async | searchClients: busca" [client]="client" (selectedClientId)="onSelected($event)">
       </app-client-list-item>
     </mat-list>
-    <app-client-details (BackClient)="selectedClient=null;ponto=null" *ngIf="selectedClient as client" [client]="client"></app-client-details> 
+    <app-client-details (BackClient)="selectedClientId=null;ponto=null"
+    *ngIf="selectedClientId as client" [clientId]="selectedClientId"></app-client-details>
   </aside>
 
   <main class="main">
@@ -45,7 +46,7 @@
         </a>
       </nav>
       <div class="sub-header">
-       
+
         <mat-toolbar>
           <ul class="status">
             <li>

@@ -1,24 +1,29 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Client } from '../models/client';
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Client } from "../models/client";
+import { ActivatedRoute, Router } from "@angular/router";
+import { ClientService } from "../services/client.service";
+import { Observable } from "rxjs";
 
 @Component({
-  selector: 'app-client-details',
-  templateUrl: './client-details.component.html',
-  styleUrls: ['./client-details.component.scss']
+  selector: "app-client-details",
+  templateUrl: "./client-details.component.html",
+  styleUrls: ["./client-details.component.scss"]
 })
 export class ClientDetailsComponent implements OnInit {
-  
-  @Input() client:Client;
-  @Output() BackClient: EventEmitter<Client> = new EventEmitter();
-  //@Output() onBackClient: EventEmitter<any> = new EventEmitter();
-  constructor() { }
+  @Input() clientId: string;
+  client$: Observable<Client>;
+
+  constructor(private clientService: ClientService, private router: Router) {}
 
   ngOnInit(): void {
+    this.retrivieClient();
   }
 
-  onBack(){
-    this.BackClient.emit();
-    
+  onBack() {
+    this.router.navigateByUrl("/clientes");
   }
 
+  private retrivieClient() {
+    this.client$ = this.clientService.retrieveClient(this.clientId);
+  }
 }

@@ -12,6 +12,9 @@ import {HistoricoComponent} from './historico/historico.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ClientListItemComponent } from './client-list-item/client-list-item.component';
 import { ClientDetailsComponent } from './client-details/client-details.component';
+import { CpfPipe } from './pipes/cpf.pipe';
+import { SearchClientsPipe } from './pipes/search-clients.pipe';
+import { DateFormatDirective } from './directives/date-format.directive';
 
 registerLocaleData(localePt, 'pt');
 
@@ -22,6 +25,9 @@ registerLocaleData(localePt, 'pt');
     HistoricoComponent,
     ClientListItemComponent,
     ClientDetailsComponent,
+    CpfPipe,
+    SearchClientsPipe,
+    DateFormatDirective,
   ],
   imports: [
     BrowserModule,

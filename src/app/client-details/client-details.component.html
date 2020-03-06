@@ -1,9 +1,8 @@
-<div class="container">
-    
+<div class="container" *ngIf="(client$ | async) as client">
     <div class="avatar">
         <button mat-button (click)="onBack()"><mat-icon class="icon-voltar"></mat-icon></button>
         <img matListAvatar src="https://i.imgur.com/1o1zEDM.png" [alt]="client.nome">
     </div>
     <h3>{{client.nome}}</h3>
-    <p>{{client.cpf}}</p>
+    <p>{{client.cpf | cpf}}</p>
 </div>

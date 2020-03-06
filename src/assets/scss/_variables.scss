@@ -1,0 +1,98 @@
+// PATHS
+$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
+$ui-font-path: "./assets/fonts/"; // use as #{$font-path}filename.ttf
+$ui-image-path: "./assets/images/"; // use as #{$image-path}filename.png
+$ui-icon-path: "./assets/icons/"; // use as #{$icon-path}filename.woff2
+
+// Custom Families
+$font-family-sans-serif: Arial, Helvetica, 'Sans-Serif';
+$font-regular: 'Regular', $font-family-sans-serif;
+$font-regularIt: 'RegularIt', $font-regular;
+$font-light: 'Light', $font-regular;
+$font-semibold: 'Semibold', $font-regular;
+$font-bold: 'Bold', $font-semibold;
+$font-boldIt: 'BoldIt', $font-bold;
+$font-black: 'Black', $font-bold;
+
+// Utils
+$link-hover-decoration: none;
+
+$font-family-base: $font-regular;
+$headings-font-weight: 400;
+$btn-font-weight: 400;
+$alert-link-font-weight: 400;
+$badge-font-weight: 400;
+$close-font-weight: 400;
+
+// Bootstrap Vars
+$body-bg: #fff;
+$input-border: #ccc;
+$link-hover-color: darken(#45cfff, 10%);
+
+// Colors
+$brand-primary: #45cfff; //#45cfff; // #337ab7
+$brand-success: #a4cd39;
+$brand-info: $brand-primary;
+$brand-warning: #ffbd00;
+$brand-danger: #ec1940;
+
+$gray-base: #000;
+$gray-darker: lighten($gray-base, 13.5%); // #222
+$gray-dark: lighten($gray-base, 20%); // #333
+$gray: lighten($gray-base, 40%); // #666
+$gray-light: lighten($gray-base, 60%); // #999
+$gray-lighter: lighten($gray-base, 90%); // #e6e6e6
+$gray-lightest: #f2f4f5;
+
+$state-danger-text: #f22057;
+$state-danger-bg: #ffe3ea;
+$state-danger-border: darken($state-danger-bg, 7%);
+
+$text-color: #1c2b38;
+$bg-login: $gray-dark;
+$bg-menu: $text-color;
+$color-link-menu: lighten(adjust-hue($text-color, -13), 52.11%); //#94bcca;
+
+$color-neutral: $color-link-menu;
+$color-primary-contrast: #c98dc6;
+$color-dark-warning: #F15A24;
+
+$font-size-base: 1rem;
+
+$action-icons: #b5e247;
+
+$btn-default-color: $color-link-menu;
+$btn-default-bg: $body-bg;
+$btn-default-border: $input-border;
+
+// radius
+$border-radius-base: 2px;
+$border-radius-large: 3px;
+$border-radius-small: 1px;
+
+// Shadow
+$default-box-shadow: 7px 7px 5px opacify($gray-base, 0.9);
+
+// Grid
+$screen-sm: 668px;
+$grid-gutter-width: 20px;
+$grid-columns: 16;
+$container-tablet: (640px + $grid-gutter-width);
+
+// Table
+$table-bg-accent: $gray-lightest;
+$table-bg-hover: transparent;
+
+// Popovers
+$popover-bg: $gray-lightest;
+$auto-complete-trigger-width: 30px;
+$auto-complete-trigger-caret-size: 4px;
+$theme-colors: (
+  "primary":$brand-primary,
+  "success":$brand-success,
+  "info":$brand-info,
+  "warning":$brand-warning,
+  "danger":$brand-danger,
+  "light":$gray-light,
+  "dark":$gray-dark
+);

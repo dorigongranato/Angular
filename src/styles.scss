@@ -1,0 +1,166 @@
+/* You can add global styles to this file, and also import other style files */
+@import "assets/theme";
+
+html {
+  -webkit-text-size-adjust: none;
+}
+
+html, body {
+  min-height: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background-color: $body-bg;
+  min-width: 360px;
+  @include transition(background-color .5s ease-in-out);
+  margin: 0;
+  font-family: $font-regular, $font-family-sans-serif;
+  font-size: 10px;
+  line-height: 1.42857143;
+  color: #1c2b38;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.client-tab-group {
+  .mat-tab-label, .mat-tab-link {
+    padding: 0 30px;
+
+    &:first-child {
+      margin-right: 15px;
+    }
+
+    justify-content: normal;
+    font-size: 12px;
+    min-width: auto;
+    opacity: 1;
+
+    .mat-tab-label-content {
+      color: #999;
+    }
+
+    &.mat-tab-label-active, .mat-tab-label-active {
+      color: $text-color;
+      font-family: $font-semibold;
+    }
+  }
+}
+
+.nav {
+  .search-container {
+    button {
+      .mat-button-focus-overlay {
+        background-color: transparent;
+      }
+    }
+  }
+
+  .mat-list {
+    padding: 0 30px;
+
+    .mat-list-item {
+      &.mat-3-line {
+        height: 102px;
+      }
+
+      .mat-list-item-content {
+        padding: 15px 0;
+        border-bottom: 1px solid $gray-lighter;
+
+        p {
+          font-size: 13px;
+          font-family: $font-regular;
+          color: $gray;
+        }
+      }
+    }
+  }
+}
+
+.mat-toolbar.mat-toolbar-single-row {
+  height: 60px;
+}
+
+.form-container {
+  max-width: 73%;
+  margin-top: 70px;
+
+  .mat-form-field {
+    width: 100%;
+  }
+
+  .mat-form-field-label {
+    font-family: $font-bold;
+    color: $text-color;
+    text-transform: uppercase;
+  }
+}
+
+.form-container, .example-container {
+  h4 {
+    font-size: 15px;
+    font-family: $font-boldIt;
+  }
+}
+
+.example-container {
+  margin-bottom: 50px;
+
+  h4 {
+    margin-bottom: 0;
+  }
+
+  p {
+    color: #999999;
+    font-size: 12px;
+  }
+}
+
+aside, header, .sub-header {
+  .mat-toolbar {
+    border-bottom: 1px solid #e6e6e6;
+  }
+}
+
+header, .sub-header {
+  .mat-toolbar {
+    border-bottom: 1px solid #e6e6e6;
+    background-color: $body-bg;
+  }
+}
+
+.sub-header {
+  .mat-toolbar {
+    .status {
+      max-height: 100%;
+      padding: 0 15px;
+      margin: 0;
+      display: flex;
+
+      li {
+        padding: 0;
+        margin: 0;
+        min-width: 120px;
+        display: inline-flex;
+        height: 60px;
+        align-items: center;
+
+        p, h6 {
+          padding: 0;
+          margin: 0;
+          width: 100%;
+          line-height: normal;
+        }
+
+        .status-label {
+          color: #999;
+          font-size: 12px;
+          font-weight: normal;
+        }
+      }
+    }
+  }
+}

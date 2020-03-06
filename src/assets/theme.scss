@@ -1,0 +1,179 @@
+@import "scss/variables";
+@import "scss/mixins";
+@import "scss/type";
+@import 'scss/icons';
+@import "scss/forms";
+@import '~@angular/material/theming';
+
+@include mat-core();
+$my-app-mat-primary: (
+  50 : #e9f9ff,
+  100 : #c7f1ff,
+  200 : #a2e7ff,
+  300 : #7dddff,
+  400 : #61d6ff,
+  500 : #45cfff,
+  600 : #3ecaff,
+  700 : #36c3ff,
+  800 : #2ebdff,
+  900 : #1fb2ff,
+  A100 : #ffffff,
+  A200 : #ffffff,
+  A400 : #ceedff,
+  A700 : #b5e4ff,
+  contrast: (
+    50 : $body-bg,
+    100 : $body-bg,
+    200 : $body-bg,
+    300 : $body-bg,
+    400 : $body-bg,
+    500 : $body-bg,
+    600 : $body-bg,
+    700 : $body-bg,
+    800 : $body-bg,
+    900 : $body-bg,
+    A100 : $body-bg,
+    A200 : $body-bg,
+    A400 : $body-bg,
+    A700 : $body-bg,
+  )
+);
+$my-app-mat-accent: (
+  50 : #fff7e0,
+  100 : #ffebb3,
+  200 : #ffde80,
+  300 : #ffd14d,
+  400 : #ffc726,
+  500 : #ffbd00,
+  600 : #ffb700,
+  700 : #ffae00,
+  800 : #ffa600,
+  900 : #ff9800,
+  A100 : #ffffff,
+  A200 : #fff9f2,
+  A400 : #ffe2bf,
+  A700 : #ffd7a6,
+  contrast: (
+    50 : $body-bg,
+    100 : $body-bg,
+    200 : $body-bg,
+    300 : $body-bg,
+    400 : $body-bg,
+    500 : $body-bg,
+    600 : $body-bg,
+    700 : $body-bg,
+    800 : $body-bg,
+    900 : $body-bg,
+    A100 : $body-bg,
+    A200 : $body-bg,
+    A400 : $body-bg,
+    A700 : $body-bg,
+  )
+);
+$my-app-mat-warn: (
+  50 : #fde3e8,
+  100 : #f9bac6,
+  200 : #f68ca0,
+  300 : #f25e79,
+  400 : #ef3c5d,
+  500 : #ec1940,
+  600 : #ea163a,
+  700 : #e71232,
+  800 : #e40e2a,
+  900 : #df081c,
+  A100 : #ffffff,
+  A200 : #ffd4d7,
+  A400 : #ffa1a8,
+  A700 : #ff8890,
+  contrast: (
+    50 : $body-bg,
+    100 : $body-bg,
+    200 : $body-bg,
+    300 : $body-bg,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : $body-bg,
+    A200 : $body-bg,
+    A400 : $body-bg,
+    A700 : $body-bg,
+  )
+);
+$my-app-mat-success: (
+  50 : #f4f9e7,
+  100 : #e4f0c4,
+  200 : #d2e69c,
+  300 : #bfdc74,
+  400 : #b2d557,
+  500 : #a4cd39,
+  600 : #9cc833,
+  700 : #92c12c,
+  800 : #89ba24,
+  900 : #78ae17,
+  A100 : #f4ffe2,
+  A200 : #e0ffaf,
+  A400 : #ccff7c,
+  A700 : #c2ff63,
+  contrast: (
+    50 : $body-bg,
+    100 : $body-bg,
+    200 : $body-bg,
+    300 : $body-bg,
+    400 : $body-bg,
+    500 : $body-bg,
+    600 : $body-bg,
+    700 : $body-bg,
+    800 : $body-bg,
+    900 : $body-bg,
+    A100 : $body-bg,
+    A200 : $body-bg,
+    A400 : $body-bg,
+    A700 : $body-bg,
+  )
+);
+$my-app-primary: mat-palette($my-app-mat-primary);
+$my-app-accent: mat-palette($my-app-mat-accent, 500, 900, A100);
+$my-app-warn: mat-palette($my-app-mat-warn);
+
+$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+$custom-typography: mat-typography-config(
+  $font-family: $font-regular,
+  $input: mat-typography-level(13px, 1.42857143, 400)
+);
+$custom-button-typography: mat-typography-config(
+  $font-family: $font-bold,
+  $button: mat-typography-level(13px, 13px, 500)
+);
+@include angular-material-theme($my-app-theme);
+@include mat-core($custom-typography);
+@include mat-button-typography($custom-button-typography);
+.alternate-theme {
+  $alternate-primary: mat-palette($my-app-mat-primary);
+  $alternate-accent: mat-palette($my-app-mat-success, 500, 900, A100);
+
+  $alternate-theme: mat-light-theme($alternate-primary, $alternate-accent);
+
+  @include angular-material-theme($alternate-theme);
+}
+
+button {
+  &.mat-raised-button {
+    line-height: 34px;
+
+    &.btn-default {
+      border: 1px solid #cecece;
+      color: $text-color;
+    }
+  }
+}
+
+.mat-form-field-required-marker {
+  color: $brand-danger;
+}
+
+.mat-form-field-underline {
+  background-color: #cccccc;
+}

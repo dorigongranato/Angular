@@ -1,0 +1,75 @@
+<div class="custom-container">
+  <aside class="nav">
+    <mat-toolbar>
+      <div class="search-container">
+        <label for="input-search">
+          <input type="text" id="input-search" placeholder="Buscar por nome, código ou email" class="input-lg">
+        </label>
+        <button mat-button><i class="icon icon-search"></i></button>
+      </div>
+    </mat-toolbar>
+    <!-- two line list -->
+    <mat-list *ngIf="!selectedClient">
+      <app-client-list-item 
+        *ngFor="let client of clients | async"  [client]="client" (selectedClient)="onSelected($event)">
+      </app-client-list-item>
+    </mat-list>
+    <app-client-details (BackClient)="selectedClient=null;ponto=null" *ngIf="selectedClient as client" [client]="client"></app-client-details> 
+  </aside>
+
+  <main class="main">
+    <header>
+      <mat-toolbar>
+        <h3 class="title">Fidelidade</h3>
+      </mat-toolbar>
+    </header>
+    <div class="content">
+      <nav mat-tab-nav-bar class="client-tab-group">
+        <a mat-tab-link
+           [routerLink]="'/transacoes'"
+           routerLinkActive #rla="routerLinkActive"
+           [active]="rla.isActive">
+          TRANSAÇÕES
+        </a>
+        <a mat-tab-link
+           [routerLink]="'/beneficios'"
+           routerLinkActive #rla1="routerLinkActive"
+           [active]="rla1.isActive">
+          BENEFÍCIOS
+        </a>
+        <a mat-tab-link
+           [routerLink]="'/historico'"
+           routerLinkActive #rla2="routerLinkActive"
+           [active]="rla2.isActive">
+          HISTÓRICO
+        </a>
+      </nav>
+      <div class="sub-header">
+       
+        <mat-toolbar>
+          <ul class="status">
+            <li>
+              <h6 class="status-label">Saldo</h6>
+              <p class="status-value">{{ponto ? (ponto.total | number:'1.0-2') : "---" }}</p>
+            </li>
+            <li>
+              <h6 class="status-label">Histórico</h6>
+              <p class="status-value">---</p>
+            </li>
+            <li>
+              <h6 class="status-label">Utilizados</h6>
+              <p class="status-value">{{ponto ? (ponto.utilizados | number) : "---" }}</p>
+            </li>
+            <li>
+              <h6 class="status-label">Perdidos</h6>
+              <p class="status-value">{{ponto ? (ponto.expirados | number) : "---" }}</p>
+            </li>
+          </ul>
+        </mat-toolbar>
+      </div>
+      <section class="demo-tab-content">
+        <router-outlet></router-outlet>
+      </section>
+    </div>
+  </main>
+</div>

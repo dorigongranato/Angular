@@ -1,0 +1,84 @@
+<form>
+  <div class="form-container">
+    <h4>Adicionar nota</h4>
+    <div fxLayout="row">
+      <mat-form-field>
+        <mat-label>Loja</mat-label>
+        <input matInput required placeholder="Razão social, nome fantasia ou CNPJ">
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutGap="15px">
+      <div fxFlex="23">
+        <mat-form-field>
+          <mat-label>Nº da nota</mat-label>
+          <input matInput placeholder="---">
+        </mat-form-field>
+      </div>
+      <div fxFlex="23">
+        <mat-form-field>
+          <mat-label>Data da nota</mat-label>
+          <input matInput [matDatepicker]="picker" placeholder="---">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div fxFlex="30">
+        <mat-form-field>
+          <mat-label>Forma de pagamento</mat-label>
+          <mat-select placeholder="---">
+            <mat-option value="option">Visa</mat-option>
+            <mat-option value="option">Mastercard</mat-option>
+            <mat-option value="option">Dinheiro</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxFlex="23">
+        <mat-form-field>
+          <mat-label>Valor</mat-label>
+          <input matInput placeholder="R$---">
+        </mat-form-field>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="15px">
+      <button mat-raised-button class="mat-elevation-z0 btn-default">Cancelar</button>
+      <button mat-raised-button class="mat-elevation-z0" color="primary">Adicionar</button>
+    </div>
+  </div>
+</form>
+
+<div class="example-container">
+  <h4>Cadastrar notas</h4>
+  <p>Você precisa confimar o cadastro dessa lista de notas</p>
+  <mat-table #table [dataSource]="dataSource">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="loja">
+      <mat-header-cell *matHeaderCellDef>Loja</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.loja}}</mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="nota">
+      <mat-header-cell *matHeaderCellDef>Nº da nota</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.nota}}</mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="cadastro">
+      <mat-header-cell *matHeaderCellDef>Cadastro</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.cadastro}}</mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="valor">
+      <mat-header-cell *matHeaderCellDef>Valor</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.valor}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

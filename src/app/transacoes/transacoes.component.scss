@@ -1,0 +1,27 @@
+@import "../../assets/scss/variables";
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  max-width: 73%;
+  margin-top: 50px;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+  .mat-header-row {
+    background-color: #f2f4f5;
+    min-height: 31px;
+    font-family: $font-bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    .mat-header-cell {
+      color: $text-color;
+    }
+  }
+  .mat-row {
+    min-height: 28px;
+  }
+}

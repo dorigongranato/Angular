@@ -1,0 +1,184 @@
+@import "variables";
+
+@font-face {
+  font-family: 'Regular';
+  src: url('#{$ui-font-path}regular.eot');
+  src: url('#{$ui-font-path}regular.eot?#iefix') format('embedded-opentype'),
+  url('#{$ui-font-path}regular.woff') format('woff'),
+  url('#{$ui-font-path}regular.woff2') format('woff2'),
+  url('#{$ui-font-path}regular.ttf') format('truetype'),
+  url('#{$ui-font-path}regular.svg#regular') format('svg');
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'RegularIt';
+  src: url('#{$ui-font-path}regularIt.eot');
+  src: url('#{$ui-font-path}regularIt.eot?#iefix') format('embedded-opentype'),
+  url('#{$ui-font-path}regularIt.woff') format('woff'),
+  url('#{$ui-font-path}regularIt.woff2') format('woff2'),
+  url('#{$ui-font-path}regularIt.ttf') format('truetype'),
+  url('#{$ui-font-path}regularIt.svg#regular') format('svg');
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Light';
+  src: url('#{$ui-font-path}light.eot');
+  src: url('#{$ui-font-path}light.eot?#iefix') format('embedded-opentype'),
+  url('#{$ui-font-path}light.woff') format('woff'),
+  url('#{$ui-font-path}light.woff2') format('woff2'),
+  url('#{$ui-font-path}light.ttf') format('truetype'),
+  url('#{$ui-font-path}light.svg#light') format('svg');
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Semibold';
+  src: url('#{$ui-font-path}semibold.eot');
+  src: url('#{$ui-font-path}semibold.eot?#iefix') format('embedded-opentype'),
+  url('#{$ui-font-path}semibold.woff') format('woff'),
+  url('#{$ui-font-path}semibold.woff2') format('woff2'),
+  url('#{$ui-font-path}semibold.ttf') format('truetype'),
+  url('#{$ui-font-path}semibold.svg#semibold') format('svg');
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Bold';
+  src: url('#{$ui-font-path}bold.eot');
+  src: url('#{$ui-font-path}bold.eot?#iefix') format('embedded-opentype'),
+  url('#{$ui-font-path}bold.woff') format('woff'),
+  url('#{$ui-font-path}bold.woff2') format('woff2'),
+  url('#{$ui-font-path}bold.ttf') format('truetype'),
+  url('#{$ui-font-path}bold.svg#bold') format('svg');
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'BoldIt';
+  src: url('#{$ui-font-path}boldIt.eot');
+  src: url('#{$ui-font-path}boldIt.eot?#iefix') format('embedded-opentype'),
+  url('#{$ui-font-path}boldIt.woff') format('woff'),
+  url('#{$ui-font-path}boldIt.woff2') format('woff2'),
+  url('#{$ui-font-path}boldIt.ttf') format('truetype'),
+  url('#{$ui-font-path}boldIt.svg#bold') format('svg');
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Black';
+  src: url('#{$ui-font-path}black.eot');
+  src: url('#{$ui-font-path}black.eot?#iefix') format('embedded-opentype'),
+  url('#{$ui-font-path}black.woff') format('woff'),
+  url('#{$ui-font-path}black.woff2') format('woff2'),
+  url('#{$ui-font-path}black.ttf') format('truetype'),
+  url('#{$ui-font-path}black.svg#black') format('svg');
+  font-style: normal;
+  font-weight: normal;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Semibold', $font-family-base;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+h2, .h2 {
+  font-size: 1.37rem;
+}
+
+h3, .h3 {
+  font-family: $font-boldIt;
+  font-size: 1.4rem;
+}
+
+.title-2 {
+  font: normal 16px $font-regularIt;
+}
+
+p, .p {
+  font-family: $font-regular;
+  font-size: 13px;
+}
+
+.text-italic {
+  font-family: $font-regularIt;
+}
+
+.label {
+  font-size: 11px;
+  text-transform: uppercase;
+  &-neutral {
+    background-color: $color-neutral;
+  }
+  &-contrast {
+    background-color: $color-primary-contrast;
+  }
+}
+
+.form-group label, .form-group .label {
+  font-family: $font-bold;
+  text-transform: uppercase;
+}
+
+.form-group {
+  input, .input,
+  select, .select {
+    font-family: $font-regular;
+    font-size: 13px;
+  }
+}
+
+.info-label {
+  font-size: 12px;
+  list-style: none;
+  margin-bottom: 1em;
+  .icon {
+    @include border-radius(2px);
+    color: $body-bg;
+    float: left;
+  }
+  .msg {
+    display: block;
+    margin-left: 2em;
+  }
+  &.success {
+    .icon {
+      background-color: $brand-success;
+    }
+  }
+  &.info {
+    .icon {
+      background-color: $brand-primary;
+    }
+  }
+  &.warning {
+    .icon {
+      background-color: $brand-warning;
+    }
+  }
+  &.danger, &.fail {
+    .icon {
+      background-color: $brand-danger;
+    }
+  }
+  &.neutral {
+    .icon {
+      background-color: $color-neutral;
+    }
+  }
+  &.contrast {
+    .icon {
+      background-color: $color-primary-contrast;
+    }
+  }
+}

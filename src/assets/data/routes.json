@@ -1,0 +1,6 @@
+{
+  "/api/*": "/$1",
+  "/:clientes/:id/show": "/:clientes/:codigo",
+  "/:clientes/:cpf/show": "/:clientes/:cpf",
+  "/:clientes/:nome/show": "/:clientes/:nome"
+}

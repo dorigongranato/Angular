@@ -20,8 +20,8 @@ export class ClientService {
     return this.http.get<Pontos>(`${environment.api}/pontos`)
   }
 
-  retrieveClient(clientId:string): Observable<Client>{
-    return this.http.get<Client>(`${environment.api}/clientes/${clientId}`)
+  retrieveClient(clientId: string):Observable<Client> {
+    return this.http.get<Client>(`${environment.api}/clientes/${clientId}`);
   }
 
 }

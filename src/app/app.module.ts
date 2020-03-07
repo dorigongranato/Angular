@@ -15,6 +15,8 @@ import { ClientDetailsComponent } from './client-details/client-details.componen
 import { CpfPipe } from './pipes/cpf.pipe';
 import { SearchClientsPipe } from './pipes/search-clients.pipe';
 import { DateFormatDirective } from './directives/date-format.directive';
+import { CpfValidatorPipe } from './pipes/cpf-validator.pipe';
+import { CpfFormatDirective } from './directives/cpf-format.directive';
 
 registerLocaleData(localePt, 'pt');
 
@@ -28,6 +30,8 @@ registerLocaleData(localePt, 'pt');
     CpfPipe,
     SearchClientsPipe,
     DateFormatDirective,
+    CpfValidatorPipe,
+    CpfFormatDirective,
   ],
   imports: [
     BrowserModule,

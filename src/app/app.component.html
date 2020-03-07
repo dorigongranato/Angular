@@ -3,15 +3,16 @@
     <mat-toolbar>
       <div class="search-container">
         <label for="input-search">
-          <input type="text" id="input-search" [(ngModel)]="busca" placeholder="Buscar por nome, código ou email" class="input-lg">
+          <input type="text" id="input-search" [(ngModel)]="busca"
+          placeholder="Buscar por nome, código ou email" class="input-lg">
         </label>
         <button mat-button><i class="icon icon-search"></i></button>
       </div>
     </mat-toolbar>
     <!-- two line list -->
     <mat-list *ngIf="!selectedClientId">
-      <app-client-list-item
-        *ngFor="let client of clients | async | searchClients: busca" [client]="client" (selectedClientId)="onSelected($event)">
+      <app-client-list-item *ngFor="let client of clients | async | searchClients: busca"
+      [client]="client" (selectedClientId)="onSelected($event)">
       </app-client-list-item>
     </mat-list>
     <app-client-details (BackClient)="selectedClientId=null;ponto=null"

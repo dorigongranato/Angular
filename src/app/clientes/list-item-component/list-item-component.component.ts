@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Client } from '../../models/client';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-item-component',
@@ -7,16 +8,16 @@ import { Client } from '../../models/client';
   styleUrls: ['./list-item-component.component.scss']
 })
 export class ListItemComponentComponent implements OnInit {
-  @Input() client: Client;
-  @Output() selectedClient: EventEmitter<Client> = new EventEmitter();
 
-  constructor() { }
+  @Input() client: Client;
+
+
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
 
-
   onSelection() {
-    this.selectedClient.emit(this.client);
+    this.router.navigate(['clientes', this.client.id]);
   }
 }

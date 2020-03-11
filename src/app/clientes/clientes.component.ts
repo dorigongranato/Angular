@@ -1,31 +1,34 @@
-import {Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Observable, ReplaySubject} from 'rxjs';
 import {Client} from '../models/client';
 import {ClientService} from '../services/client.service';
-import {Router} from '@angular/router';
+import {Router, NavigationEnd, ActivatedRoute} from '@angular/router';
+import { takeUntil } from 'rxjs/Operators';
 
 @Component({
   selector: 'app-clientes',
   templateUrl: './clientes.component.html',
   styleUrls: ['./clientes.component.scss']
 })
-export class ClientesComponent implements OnInit {
+export class ClientesComponent implements OnInit, OnDestroy {
 
   clients: Observable<Client[]>;
-  selectedClient: Client;
-  busca = 'Paulo';
+  selectedClientId;
+  busca;
 
-  constructor(private clientService: ClientService,
-              private router: Router) {
+  private destroyed$: ReplaySubject<boolean> = new ReplaySubject();
 
-  }
+  constructor(private clientService: ClientService, private router: Router, private route: ActivatedRoute) {}
+
+  //Criar o frmBuilder
 
   ngOnInit(): void {
     this.clients = this.clientService.retrieveClients();
+    this.route.paramMap.pipe(takeUntil(this.destroyed$)).subscribe(paramMap => this.selectedClientId = paramMap.get('id'));
   }
 
-  onSelected(client: Client): void {
-    this.selectedClient = client;
+  ngOnDestroy(){
+    this.destroyed$.next(true)
+    this.destroyed$.complete()
   }
-
 }

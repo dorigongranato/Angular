@@ -11,15 +11,22 @@ import { FormattedCpfPipe } from '../../pipes/formatted-cpf.pipe';
   styleUrls: ['./client-details.component.scss']
 })
 export class ClientDetailsComponent implements OnInit {
-  @Input() client: Client;
+  @Input() clientId: string;
   @Output() back: EventEmitter<any> = new EventEmitter()
+  client$: Observable<Client>;
 
-  constructor() { }
+  constructor(private clientService:ClientService,  private router: Router) { }
 
   ngOnInit(): void {
+    this.retrivieClient();
   }
 
   onBack() {
-    this.back.emit();
+    // this.back.emit();
+    this.router.navigateByUrl("/clientes");
+  }
+
+  private retrivieClient() {
+    this.client$ = this.clientService.retrieveClient(this.clientId);
   }
 }

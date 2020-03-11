@@ -1,4 +1,4 @@
-<div class="container" *ngIf="client">
+<div class="container" *ngIf="(client$ | async) as client">
     <div class="avatar">
         <button mat-button (click)="onBack()"><i class="icon icon-voltar"></i></button>
         <img matListAvatar

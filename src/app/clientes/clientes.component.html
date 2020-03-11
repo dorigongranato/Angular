@@ -10,13 +10,11 @@
       </div>
     </mat-toolbar>
     <!-- two line list -->
-    <mat-list *ngIf="!selectedClient">
-      <app-list-item-component *ngFor="let client of clients | async"
-                               [client]="client" (selectedClient)="onSelected($event)">
+    <mat-list *ngIf="!selectedClientId">
+      <app-list-item-component *ngFor="let client of clients | async" [client]="client">
       </app-list-item-component>
     </mat-list>
-    <app-client-details *ngIf="selectedClient" [client]="selectedClient" (back)="selectedClient = null">
-    </app-client-details>
+    <app-client-details *ngIf="selectedClientId as client" [clientId]="selectedClientId"></app-client-details>
   </aside>
 
   <main class="main">

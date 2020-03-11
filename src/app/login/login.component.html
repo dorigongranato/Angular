@@ -3,17 +3,17 @@
     <mat-card-header>
       <mat-card-title>Log in</mat-card-title>
     </mat-card-header>
-    <form class="example-form">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <mat-card-content>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Usuário">
+          <input matInput placeholder="Usuário" formControlName="username">
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Senha">
+          <input matInput placeholder="Senha" formControlName="password">
         </mat-form-field>
       </mat-card-content>
-      <button mat-stroked-button color="primary" class="btn-block">Login</button>
+      <button mat-stroked-button color="primary" class="btn-block" type="submit">Login</button>
     </form>
   </mat-card>
 </div>

@@ -1,23 +1,23 @@
-<form>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
   <div class="form-container">
     <h4>Adicionar nota</h4>
     <div fxLayout="row">
       <mat-form-field>
         <mat-label>Loja</mat-label>
-        <input matInput required placeholder="Razão social, nome fantasia ou CNPJ">
+        <input matInput formControlName="loja" placeholder="Razão social, nome fantasia ou CNPJ">
       </mat-form-field>
     </div>
     <div fxLayout="row" fxLayoutGap="15px">
       <div fxFlex="23">
         <mat-form-field>
           <mat-label>Nº da nota</mat-label>
-          <input matInput placeholder="---">
+          <input matInput placeholder="---" formControlName="nota" >
         </mat-form-field>
       </div>
       <div fxFlex="23">
         <mat-form-field>
           <mat-label>Data da nota</mat-label>
-          <input matInput [matDatepicker]="picker" appDateFormat placeholder="---">
+          <input matInput [matDatepicker]="picker" formControlName="dataCadastro" appDateFormat placeholder="---">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
@@ -25,17 +25,17 @@
       <div fxFlex="30">
         <mat-form-field>
           <mat-label>Forma de pagamento</mat-label>
-          <mat-select placeholder="---">
-            <mat-option value="option">Visa</mat-option>
-            <mat-option value="option">Mastercard</mat-option>
-            <mat-option value="option">Dinheiro</mat-option>
+          <mat-select placeholder="---" formControlName="formaPagamento">
+            <mat-option value="Visa">Visa</mat-option>
+            <mat-option value="Mastercard">Mastercard</mat-option>
+            <mat-option value="Dinheiro">Dinheiro</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
       <div fxFlex="23">
         <mat-form-field>
           <mat-label>Valor</mat-label>
-          <input matInput placeholder="R$---">
+          <input matInput placeholder="R$---" formControlName="valor">
         </mat-form-field>
       </div>
     </div>
@@ -67,15 +67,32 @@
     </ng-container>
 
     <!-- Weight Column -->
-    <ng-container matColumnDef="cadastro">
+    <ng-container matColumnDef="dataCadastro">
       <mat-header-cell *matHeaderCellDef>Cadastro</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.cadastro}}</mat-cell>
+      <mat-cell *matCellDef="let element">{{element.dataCadastro}}</mat-cell>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="valor">
       <mat-header-cell *matHeaderCellDef>Valor</mat-header-cell>
       <mat-cell *matCellDef="let element">{{element.valor}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="formaPagamento">
+      <mat-header-cell *matHeaderCellDef>Forma de Pagamento</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.formaPagamento}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>Forma de Pagamento</mat-header-cell>
+      <mat-cell *matCellDef="let element; let i = index">
+        <button mat-icon-button type="button" (click)="onEdit(i)">
+          <i class="icon icon-editar"></i>
+        </button>
+        <button mat-icon-button type="button" >
+          <i class="icon icon-excluir"></i>
+        </button>
+      </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
